@@ -1,5 +1,4 @@
-input ("Wilkommen zu Potexxi's Zahlen Guesser!");
-input ("Welcome to Potexxis's Number Guesser!");
+
 
 input ("Wählen Sie eine Sprache");
 input ("Choose a language");
@@ -10,13 +9,14 @@ y = 'deutsch'
 u = 'english'
 
 if x == y:
+    input("Wilkommen zu Potexxi's Zahlen Guesser!");
     z = input ("Gebe eine Zahl ein: ")
     import time
     symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
     i = 3
     i = (i + 1) % len(symbols)
     print('\r\033[K%s Lese deine Gedanken...' % symbols[i], flush=True, end='')
-    time.sleep(5)
+    time.sleep(4)
 
     input ("   drücke ENTER, um meine Zahl aufzudecken")
 
@@ -25,6 +25,7 @@ if x == y:
 
 
 if x == u:
+    input("Welcome to Potexxis's Number Guesser!");
     o = input ("Insert a number: ");
 
     import time
@@ -33,9 +34,13 @@ if x == u:
     i = 3
     i = (i + 1) % len(symbols)
     print('\r\033[K%s Read your thoughts...' % symbols[i], flush=True, end='')
-    time.sleep(5)
+    time.sleep(4)
 
     input("   press ENTER to reveal my number");
 
     print(o);
     input("Right?");
+
+
+
+
