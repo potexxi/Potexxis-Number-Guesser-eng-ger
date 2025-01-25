@@ -1,44 +1,56 @@
-
 import time
+symbols_for_loading = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
 
-print ("Wählen Sie eine Sprache")
-time.sleep(1.5)
 
-print ("Choose a language")
-time.sleep(1.5)
+def loading_animation(language):
+    for _ in range(10):
+        for symbol in symbols_for_loading:
+            if language == "english":
+                print(f'\r{symbol} Reading your thoughts...', flush=True, end='')
+            else:
+                print(f'\r{symbol} Lese deine Gedanken...', flush=True, end='')
+            time.sleep(0.1)
+    print("\r", end='')
 
-x = input ("Type/Tippe english or/oder deutsch: ")
 
-y = 'deutsch'
-u = 'english'
+def number_guessing_game(language, welcome_message):
+    print(f"\n{welcome_message}")
+    time.sleep(1.5)
 
-if x != y and x != u:
-    print ("ERROR!")
-    time.sleep(3)
+    if language == "english":
+        number = input("Insert a number: ")
+    else:
+        number = input("Gebe eine Zahl ein: ")
+    loading_animation(language)
 
-elif x == y:
-    print("Wilkommen zu Potexxi's Zahlen Guesser!")
+    if language == "english":
+        input("\rPress ENTER to reveal my number...")
+        print(number)
+        print("Right?")
+    else:
+        input("\rDrücke ENTER, um meine Zahl aufzudecken...")
+        print(number)
+        print("Richtig?")
     time.sleep(2)
-    z = input ("Gebe eine Zahl ein: ")
-    symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
-    i = 3
-    i = (i + 1) % len(symbols)
-    print('\r\033[K%s Lese deine Gedanken...' % symbols[i], flush=True, end='')
-    time.sleep(3.5)
-    input ("   drücke ENTER, um meine Zahl aufzudecken")
-    print (z)
-    input ("Richtig?")
 
 
-elif x == u:
-    print("Welcome to Potexxis's Number Guesser!")
-    time.sleep(2)
-    o = input ("Insert a number: ")
-    symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
-    i = 3
-    i = (i + 1) % len(symbols)
-    print('\r\033[K%s Read your thoughts...' % symbols[i], flush=True, end='')
-    time.sleep(3.5)
-    input("   press ENTER to reveal my number")
-    print(o)
-    input("Right?")
+def main():
+    print("Choose a language / Wählen Sie eine Sprache")
+    de = 'deutsch'
+    eng = 'english'
+    while True:
+        language_choice = input("Type/Tippe english or/oder deutsch: ").strip().lower()
+        if language_choice in [eng, de]:
+            break
+        else:
+            print(f"\nInvalid choice: \"{language_choice}\" Please type {eng} or {de}!", end='')
+            time.sleep(3)
+            print(f"\rUngültige Auswahl: \"{language_choice}\" Gebe bitte {eng} oder {de} ein!")
+
+    if language_choice == de:
+        number_guessing_game("deutsch", "Willkommen zu Potexxi's Zahlen Guesser!")
+    elif language_choice == eng:
+        number_guessing_game("english", "Welcome to Potexxi's Number Guesser!")
+
+
+main()
